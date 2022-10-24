@@ -1,0 +1,70 @@
+$primary-color: #fb5454 !important;
+@mixin align {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+body {
+    margin: 0;
+    color: $primary-color;
+}
+.register--page {
+    @include align;
+    flex-wrap: wrap;
+    background-color: #E2E2E2;
+    height: 100%;
+    .sections {
+        display: flex;
+        width: 60%;
+        height: auto;
+        flex-direction: row;
+        margin: 90px;
+        background-color: white;
+        border-radius: 10px;
+        form {
+            @include align;
+            flex: 2;
+            flex-direction: column;
+            padding: 0;
+            height: auto;   
+        }
+        h1 {
+            color: $primary-color;
+        }
+        .ant-input {
+            margin: 15px !important;
+            width: 50% !important;
+            border-radius: 5px !important;
+        }
+        .ant-input:focus {
+            border-color: $primary-color;
+            background-color: white;
+        }
+        .ant-input:hover {
+            border-color: $primary-color;
+        }
+        .btn-selector input {
+            background-color: $primary-color;
+            color: white;
+            padding: 10px;
+            margin-top: 30px;
+        }
+        .ant-checkbox-checked .ant-checkbox-inner {
+            background-color: $primary-color;
+            border: 1px solid $primary-color;
+        }
+        .ant-checkbox:hover .ant-checkbox-inner {
+            border-color: $primary-color;
+            border: 1px solid $primary-color;
+        }
+        img {
+            flex: 1;
+            width: 277px;
+            height: auto;
+            margin: 0;
+            padding: 0; 
+        }
+    }
+}
+

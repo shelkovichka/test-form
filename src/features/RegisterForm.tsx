@@ -1,36 +1,46 @@
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
-import RegisterImage from './assets/image.png'
-import './RegisterForm.css'
+import RegisterImage from '../assets/image.png'
+import './RegisterForm.scss'
 import 'antd/dist/antd.css';
 import { Input, Checkbox } from 'antd';
 
-interface FormValues {
-    name: string;
-    email: string;
-    password: string;
+type FormValues = {
+    name: string,
+    email: string,
+    password: string
 };
 
 const RegisterForm = () => {
-  const { register, control, handleSubmit } = useForm<FormValues>();
-  const onSubmit: SubmitHandler<FormValues> = (data: FormValues) => console.log(data);
+  const { control, handleSubmit } = useForm<FormValues>();
+  const onSubmit: SubmitHandler<FormValues> = (data: FormValues) => 
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+        })
+        .then((response) => response.json())
+        .then((json) => console.log(json));
 
   return (
     <div className="register--page">
         <div className="sections">
-        <form onSubmit={handleSubmit(onSubmit)} className="input--selector">
-            <div className="color--selector">
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <div>
                 <h1>Create Account</h1>
             </div>
             <div>
                 <Controller 
                     name="name"
+                    rules={{required: true}}
                     control={control}
                     render={({field}) => (
                         <Input
                             {...field} 
                             placeholder="Name" 
                             size="large" 
-                            type="text" 
+                            type="text"
                         />
                     )}
                 />
@@ -38,13 +48,14 @@ const RegisterForm = () => {
             <div>
                 <Controller 
                     name="email"
+                    rules={{required: true}}
                     control={control}
                     render={({field}) => (
                         <Input
                             {...field} 
                             placeholder="Email" 
                             size="large" 
-                            type="text" 
+                            type="email" 
                         />
                     )}
                 />
@@ -52,13 +63,14 @@ const RegisterForm = () => {
             <div>
                 <Controller 
                     name="password"
+                    rules={{required: true}}
                     control={control}
                     render={({field}) => (
                         <Input
                             {...field} 
                             placeholder="Password" 
                             size="large" 
-                            type="text" 
+                            type="password" 
                         />
                     )}
                 />
@@ -66,7 +78,7 @@ const RegisterForm = () => {
             <div>
                 <Checkbox>I agree to the Terms and Privacy Policy</Checkbox>
             </div>
-            <div className="background--color--selector">
+            <div className="btn-selector">
                 <Input type={"submit"} value="Sign up" />
             </div>
         </form>

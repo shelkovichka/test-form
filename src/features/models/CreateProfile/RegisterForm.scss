@@ -1,0 +1,63 @@
+$primary-color: #fb5454;
+@mixin align {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+body {
+    margin: 0;
+}
+.register--page {
+    @include align;
+    flex-wrap: wrap;
+    background-color: #E2E2E2;
+    height: 100%;
+    .sections {
+        display: flex;
+        width: 55%;
+        height: auto;
+        flex-direction: row;
+        margin: 90px;
+        background-color: white;
+        border-radius: 10px;
+        form {
+            @include align;
+            flex: 2;
+            flex-direction: column;
+            padding: 0;
+            height: auto;  
+            h1 {
+                color: $primary-color;
+            } 
+            .MuiOutlinedInput-root {
+                width: 350px;
+                margin: 15px;
+            }
+            .MuiOutlinedInput-root:hover {
+                & > fieldset {
+                    border-color: $primary-color;
+                }
+            }
+            .MuiButton-root {
+                background-color: $primary-color;
+                color: white;
+                width: 350px;
+                padding: 10px;
+                margin-top: 20px;
+            }
+            .MuiCheckbox-root {
+                color: $primary-color;
+                background-color: white;
+            }
+        }
+        img {
+            flex: 1;
+            width: 277px;
+            height: auto;
+            margin: 0;
+            padding: 0; 
+        }
+    }
+}
+

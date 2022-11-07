@@ -16,6 +16,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"],
+  "include": ["src", "models", "models/CreateProfile", "CreateProfile", "models/CreateProfile", "models"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
